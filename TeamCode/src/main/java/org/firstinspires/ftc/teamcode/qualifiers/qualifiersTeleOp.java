@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.qualifiers;
 
-//I'm here
 
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
