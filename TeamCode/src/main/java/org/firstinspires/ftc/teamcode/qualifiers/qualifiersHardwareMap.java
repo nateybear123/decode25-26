@@ -10,46 +10,40 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 
 public class qualifiersHardwareMap {
-    HuskyLens huskyLens;
-
-    // Regular Movement DC Motors
-    DcMotorEx bl, br, fl, fr;
-
-    NormalizedColorSensor colorSensor;
-
-    HardwareMap hardwareMap;
-
-
-    // Sensors
+    public DcMotorEx bl, br, fl, fr;
+//    public NormalizedColorSensor colorSensor;
     public IMU imu;
 
-    public void init(HardwareMap ahwMap){
-        hardwareMap = ahwMap;
+//    HuskyLens huskyLens;
 
-        colorSensor = hardwareMap.get(NormalizedColorSensor.class, "color");
+    public void init(HardwareMap hardwareMap){
+        // Color Sensor
+//        colorSensor = hardwareMap.get(NormalizedColorSensor.class, "color");
+        // Camera
+//        huskyLens  = hardwareMap.get(HuskyLens.class,"huskyLens");
 
-        //Camera
-        huskyLens = hardwareMap.get(HuskyLens.class,"huskyLens");
-//
-
-        // Initialization Code
         br = hardwareMap.get(DcMotorEx.class, "backRight");
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
-        fr = hardwareMap.get(DcMotorEx.class,"frontRight");
-        fl = hardwareMap.get(DcMotorEx.class,"frontLeft");
+        fr = hardwareMap.get(DcMotorEx.class, "frontRight");
+        fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
 
+        imu = hardwareMap.get(IMU.class, "imu");
 
-        imu = hardwareMap.get(IMU.class,"imu");
-
-
-        // Movement (might not be necessary/waste power)
-        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        // Zero power behavior
         fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        br.setDirection(DcMotorSimple.Direction.REVERSE);
+        fl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        bl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        //TODO FIGURE OUT WHICH NEEDS TO BE REVERSE OR FORWARD
+//         fl.setDirection(DcMotorSimple.Direction.REVERSE);
+//         bl.setDirection(DcMotorSimple.Direction.REVERSE);
+//         fr.setDirection(DcMotorSimple.Direction.FORWARD);
+//         br.setDirection(DcMotorSimple.Direction.FORWARD);
     }
-
-
 }
