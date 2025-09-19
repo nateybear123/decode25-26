@@ -29,37 +29,23 @@ public class talhaOutreachBot extends LinearOpMode {
 
         // Main control loop
         while (opModeIsActive()) {
-            double forward = gamepad1.right_trigger;
-            double backward = gamepad1.left_trigger;
-            double strafe = gamepad1.left_stick_x;
-            double rotate = gamepad1.right_stick_x;
+            double y = -gamepad1.left_stick_y;
+            double x = gamepad1.left_stick_x * 1.1;
+            double rx = gamepad1.right_stick_x;
 
-            double y = forward - backward;
-            double s = strafe * 1.1;
-            double r = rotate;
-
-            double frontLeftPower  = y + s + r;
-            double backLeftPower   = y - s + r;
-            double frontRightPower = y - s - r;
-            double backRightPower  = y + s - r;
-
-            // Normalize powers
-            double max = Math.max(Math.abs(frontLeftPower), Math.abs(backLeftPower));
-            max = Math.max(max, Math.abs(frontRightPower));
-            max = Math.max(max, Math.abs(backRightPower));
-
-            if (max > 1.0) {
-                frontLeftPower  /= max;
-                backLeftPower   /= max;
-                frontRightPower /= max;
-                backRightPower  /= max;
-            }
+            double demominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+            double frontLeftPower  = (y + x + rx) / demominator;
+            double backLeftPower   = (y - x + rx) / demominator;
+            double frontRightPower = (y - x - rx) / demominator;
+            double backRightPower  = (y + x - rx) / demominator;
 
             // Set motor powers
-            frontLeft.setPower(frontLeftPower);
-            backLeft.setPower(backLeftPower);
-            frontRight.setPower(frontRightPower);
-            backRight.setPower(backRightPower);
+            frontLeft.setPower(frontLeftPower / 1.4);
+            backLeft.setPower(backLeftPower / 1.4);
+            frontRight.setPower(frontRightPower / 1.4);
+            backRight.setPower(backRightPower / 1.4);
+
+            
 
             // Telemetry
             telemetry.addData("FL", frontLeftPower);
