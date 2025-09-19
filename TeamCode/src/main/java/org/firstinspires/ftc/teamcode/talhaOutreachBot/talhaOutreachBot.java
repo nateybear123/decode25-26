@@ -1,13 +1,16 @@
 package org.firstinspires.ftc.teamcode.talhaOutreachBot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @TeleOp(name="Talha Outreach Bot", group="TeleOp")
 public class talhaOutreachBot extends LinearOpMode {
 
-    private DcMotorEx frontLeft, frontRight, backLeft, backRight;
+    DcMotorEx frontLeft, frontRight, backLeft, backRight, armLeft, armRight;
+
+    Servo claw;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -16,6 +19,12 @@ public class talhaOutreachBot extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
         backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
         backRight = hardwareMap.get(DcMotorEx.class, "backRight");
+
+        //Arm Initialization
+        armLeft = hardwareMap.get(DcMotorEx.class,"armLeft");
+        armRight = hardwareMap.get(DcMotorEx.class,"armRight");
+
+        claw = hardwareMap.get(Servo.class,"claw");
 
         // Reverse left motors
         frontLeft.setDirection(DcMotorEx.Direction.REVERSE);
@@ -46,6 +55,8 @@ public class talhaOutreachBot extends LinearOpMode {
             backRight.setPower(backRightPower / 1.4);
 
             
+
+
 
             // Telemetry
             telemetry.addData("FL", frontLeftPower);
