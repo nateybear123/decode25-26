@@ -12,10 +12,10 @@ public class talhaOutreachBot extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         // Mapping the motors
-        frontLeft = hardwareMap.get(DcMotorEx.class, "front_left");
-        frontRight = hardwareMap.get(DcMotorEx.class, "front_right");
-        backLeft = hardwareMap.get(DcMotorEx.class, "back_left");
-        backRight = hardwareMap.get(DcMotorEx.class, "back_right");
+        frontLeft = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
+        backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
+        backRight = hardwareMap.get(DcMotorEx.class, "backRight");
 
         // Reverse left motors
         frontLeft.setDirection(DcMotorEx.Direction.REVERSE);
