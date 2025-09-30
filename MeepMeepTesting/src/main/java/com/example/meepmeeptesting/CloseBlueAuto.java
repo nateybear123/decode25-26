@@ -9,7 +9,7 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class CloseBlueAuto {
 
     //TODO ONCE NOT IN MEEP MEEP MAKE THE MOTIF = WHATEVER THE APRIL TAG DISCOVERS AND USE THAT
-    public static String motif = "GPP";
+    public static String motif = "PGP";
 
     //Location for the robot to start
     //TODO Change if starting close/far and for red/blue
@@ -20,8 +20,8 @@ public class CloseBlueAuto {
 
     //Position and heading the robot needs to be to launch the artifact
     //TODO Find where bc right now the position is a complete guess
-    static double launchX = -38;
-    static double launchY = -38;
+    static double launchX = -16;
+    static double launchY = 0;
     static double launchHeading = Math.toRadians(360); //In degrees
     static Vector2d launchPose = new Vector2d(launchX,launchY);
 

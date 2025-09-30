@@ -13,15 +13,15 @@ public class FarRedAuto {
 
     //Location for the robot to start
     //TODO Change if starting close/far and for red/blue
-    static double startX = -50;
-    static double startY = 50;
-    static double startHeading = -45; //In degrees
+    static double startX = 56;
+    static double startY = -8;
+    static double startHeading = -225;
     static Pose2d startPose = new Pose2d(startX,startY,Math.toRadians(startHeading));
 
     //Position and heading the robot needs to be to launch the artifact
     //TODO Find where bc right now the position is a complete guess
-    static double launchX = -38;
-    static double launchY = 38;
+    static double launchX = -16;
+    static double launchY = 0;
     static double launchHeading = Math.toRadians(180); //In degrees
     static Vector2d launchPose = new Vector2d(launchX,launchY);
 
@@ -49,20 +49,20 @@ public class FarRedAuto {
 
         myBot.runAction(myBot.getDrive().actionBuilder(startPose)
                 .waitSeconds(0)
-                .lineToX(launchX)
+                .splineTo(launchPose,Math.toRadians(135))
                 //Scan for which artifacts and shoot (waitSeconds is placeholder for shooting)
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
                 .build());
 
@@ -83,20 +83,20 @@ public class FarRedAuto {
 
         myBot.runAction(myBot.getDrive().actionBuilder(startPose)
                 .waitSeconds(0)
-                .lineToX(launchX)
+                .splineTo(launchPose,Math.toRadians(135))
                 //Scan for which artifacts and shoot (waitSeconds is placeholder for shooting)
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
                 .build());
 
@@ -117,20 +117,20 @@ public class FarRedAuto {
 
         myBot.runAction(myBot.getDrive().actionBuilder(startPose)
                 .waitSeconds(0)
-                .lineToX(launchX)
+                .splineTo(launchPose,Math.toRadians(135))
                 //Scan for which artifacts and shoot (waitSeconds is placeholder for shooting)
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(-12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(-12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(-12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
-                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(-270))
+                .strafeToLinearHeading(new Vector2d(12,32),Math.toRadians(90))
                 //This is where we pick up 3 new specemin and sort maybe?
-                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(-270))
-                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(-270))
-                .splineTo(launchPose,Math.toRadians(135))
+                .strafeToLinearHeading(new Vector2d(12,52), Math.toRadians(90))
+                .strafeToLinearHeading(new Vector2d(12,40), Math.toRadians(90))
+                .splineTo(launchPose,Math.toRadians(-45))
                 .waitSeconds(4)
                 .build());
 

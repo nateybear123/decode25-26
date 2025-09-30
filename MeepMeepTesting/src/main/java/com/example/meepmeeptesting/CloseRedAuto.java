@@ -20,8 +20,8 @@ public class CloseRedAuto {
 
     //Position and heading the robot needs to be to launch the artifact
     //TODO Find where bc right now the position is a complete guess
-    static double launchX = -38;
-    static double launchY = 38;
+    static double launchX = -16;
+    static double launchY = 0;
     static double launchHeading = Math.toRadians(180); //In degrees
     static Vector2d launchPose = new Vector2d(launchX,launchY);
 
