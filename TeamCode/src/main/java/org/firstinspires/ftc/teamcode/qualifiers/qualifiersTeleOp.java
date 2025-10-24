@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
 
-@TeleOp(name = "TeleOp")
+@TeleOp(name = "TeleOp", group = "qualifiers")
 public class qualifiersTeleOp extends LinearOpMode {
 
     int linearMin = 0;
