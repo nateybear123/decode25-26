@@ -244,7 +244,11 @@ public final class MecanumDrive {
 
         voltageSensor = hardwareMap.voltageSensor.iterator().next();
 
-        localizer = new DriveLocalizer(pose);
+        // TODO: Calculate inPerTick based on your encoder specs
+        // For goBILDA odometry pods (8192 ticks/rev, 48mm wheel):
+        // double inPerTick = (48 * Math.PI / 25.4) / 8192;
+        double inPerTick = 0.001; // REPLACE THIS with your actual value
+        localizer = new ThreeDeadWheelLocalizer(hardwareMap, inPerTick, pose, lazyImu);
 
         FlightRecorder.write("MECANUM_PARAMS", PARAMS);
     }
