@@ -22,7 +22,7 @@ import java.util.Deque;
 import java.util.List;
 
 
-@TeleOp(name = "Flywheel Testing (Localization)", group = "qualifiers")
+@TeleOp(name = "Flywheel Cali", group = "qualifiers")
 public class flywheelcali extends LinearOpMode {
 
     private static final String FLYWHEEL_MOTOR = "flywheel";
