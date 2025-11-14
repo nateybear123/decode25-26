@@ -10,8 +10,9 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 
 public class qualifiersHardwareMap {
-    public DcMotorEx bl, br, fl, fr;
-//    public NormalizedColorSensor colorSensor;
+    public DcMotorEx bl, br, fl, fr, flywheel;
+
+    //    public NormalizedColorSensor colorSensor;
     public IMU imu;
 
 //    HuskyLens huskyLens;
@@ -39,6 +40,9 @@ public class qualifiersHardwareMap {
         fr.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         bl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
+        flywheel.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
 
         //TODO FIGURE OUT WHICH NEEDS TO BE REVERSE OR FORWARD
 //         fl.setDirection(DcMotorSimple.Direction.REVERSE);

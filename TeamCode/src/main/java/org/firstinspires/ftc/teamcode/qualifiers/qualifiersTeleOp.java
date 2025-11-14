@@ -35,15 +35,55 @@ public class qualifiersTeleOp extends LinearOpMode {
             PoseStorage.currentPose.position.x,
             PoseStorage.currentPose.position.y,
             Math.toDegrees(PoseStorage.currentPose.heading.toDouble()));
+        telemetry.addLine();
+        telemetry.addLine("=== MANUAL POSITION OVERRIDE ===");
+        telemetry.addLine("A: Far Red (56, -8, -225°)");
+        telemetry.addLine("B: Close Red (-50, 50, -45°)");
+        telemetry.addLine("X: Far Blue (56, -8, -225°)");
+        telemetry.addLine("Y: Close Blue (-50, -50, 45°)");
+        telemetry.addLine("DPAD_DOWN: Reset to (0, 0, 0)");
+        telemetry.addLine();
+        telemetry.addData("Status", "Ready - Press buttons to override position");
         telemetry.update();
 
-
-
-        telemetry.addData("Status", "Initialized");
-        telemetry.update();
-
-
-        waitForStart();
+        // Manual position selection during init
+        while (!isStarted() && !isStopRequested()) {
+            if (gamepad1.a) {
+                // Far Red position
+                LocalizationHelper.resetPosition(drive, new Pose2d(56, -8, Math.toRadians(-225)));
+                telemetry.addData("Position Override", "Far Red (56, -8, -225°)");
+                telemetry.update();
+                sleep(300); // Debounce
+            }
+            else if (gamepad1.b) {
+                // Close Red position
+                LocalizationHelper.resetPosition(drive, new Pose2d(-50, 50, Math.toRadians(-45)));
+                telemetry.addData("Position Override", "Close Red (-50, 50, -45°)");
+                telemetry.update();
+                sleep(300);
+            }
+            else if (gamepad1.x) {
+                // Far Blue position
+                LocalizationHelper.resetPosition(drive, new Pose2d(56, -8, Math.toRadians(-225)));
+                telemetry.addData("Position Override", "Far Blue (56, -8, -225°)");
+                telemetry.update();
+                sleep(300);
+            }
+            else if (gamepad1.y) {
+                // Close Blue position
+                LocalizationHelper.resetPosition(drive, new Pose2d(-50, -50, Math.toRadians(45)));
+                telemetry.addData("Position Override", "Close Blue (-50, -50, 45°)");
+                telemetry.update();
+                sleep(300);
+            }
+            else if (gamepad1.dpad_down) {
+                // Reset to origin
+                LocalizationHelper.resetPosition(drive, new Pose2d(0, 0, 0));
+                telemetry.addData("Position Override", "Origin (0, 0, 0)");
+                telemetry.update();
+                sleep(300);
+            }
+        }
 
 
         //TODO UPDATE MOVING CODE TO BE BETTER (DRIFTING AND WHAT NOT)
