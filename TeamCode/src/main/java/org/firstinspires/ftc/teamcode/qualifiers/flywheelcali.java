@@ -69,6 +69,7 @@ public class flywheelcali extends LinearOpMode {
 
             if (!startup) {flywheel.setVelocity(targetRpm);}
             telemetry.addLine("Controls: LB = increase speed, RB = reset speed");
+            telemetry.addLine("Target RPM:"+ targetRpm);
             telemetry.update();
         }
     }
