@@ -41,7 +41,7 @@ public class qualifiersHardwareMap {
         bl.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
+        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         flywheel.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
 
         //TODO FIGURE OUT WHICH NEEDS TO BE REVERSE OR FORWARD

@@ -37,26 +37,22 @@ public class flywheelTesting extends LinearOpMode {
     // This accounts for energy from flap wheels + energy transfer efficiency
     private static final double KEFF = 0.80;
 
-    // TODO: Measure launch height - height of shooter exit point above ground (in meters)
     // Use a tape measure to measure from floor to where artifact exits shooter
-    private static final double H_LAUNCH_M = 0.30;  // 30cm = 0.3m (example)
+    private static final double H_LAUNCH_M = 0.41;  // 30cm = 0.3m (example)
 
-    // TODO: Measure goal height - height of basket center above ground (in meters)
     private static final double H_GOAL_M = 0.9906;  //~39 inches (put in meters)
 
     // TODO: Measure your shooter angle above horizontal (in degrees)
     // Use a protractor or angle finder to measure the angle of your shooter
     // 0° = horizontal, 45° = 45 degrees up, etc.
-    private static final double THETA_DEG = 38.0;
+    private static final double THETA_DEG = 70.0;
 
-    // TODO: Set BLUE GOAL position on field (X, Y in inches)
     // Measure from field center (0,0) to the center of the blue basket
     // Standard FTC field: X = forward/back, Y = left/right
     // Example positions (adjust to actual field measurements):
     private static final double BLUE_GOAL_X = -60.0;  // Adjust based on your field
     private static final double BLUE_GOAL_Y = -60.0;  // Adjust based on your field
 
-    // TODO: Set RED GOAL position on field (X, Y in inches)
     // Measure from field center (0,0) to the center of the red basket
     private static final double RED_GOAL_X = 60.0;   // Adjust based on your field
     private static final double RED_GOAL_Y = 60.0;   // Adjust based on your field
