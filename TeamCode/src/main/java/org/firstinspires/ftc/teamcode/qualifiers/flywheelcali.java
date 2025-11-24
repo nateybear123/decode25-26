@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -27,7 +28,7 @@ public class flywheelcali extends LinearOpMode {
 
     private static final String FLYWHEEL_MOTOR = "flywheel";
 
-    private DcMotorEx flywheel;
+    private DcMotorEx flywheel, intake;
 
     private double targetRpm = 0.0;
 
@@ -39,6 +40,12 @@ public class flywheelcali extends LinearOpMode {
         //init stuff
         flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        intake = hardwareMap.get(DcMotorEx.class, "intake");
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        //TODO if you need to reverse the direction uncomment this hunter
+        //intake.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
@@ -66,6 +73,13 @@ public class flywheelcali extends LinearOpMode {
                 }
                 targetRpm = 500;
             }
+
+            if (gamepad1.y){
+                intake.setPower(100);
+            } else if (gamepad1.a) {
+                intake.setPower(0);
+            }
+
 
             if (!startup) {flywheel.setVelocity(targetRpm);}
             telemetry.addLine("Controls: LB = increase speed, RB = reset speed");
