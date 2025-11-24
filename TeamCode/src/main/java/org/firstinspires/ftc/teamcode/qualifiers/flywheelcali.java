@@ -40,6 +40,7 @@ public class flywheelcali extends LinearOpMode {
         //init stuff
         flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        flywheel.setDirection(DcMotor.Direction.REVERSE);
 
         intake = hardwareMap.get(DcMotorEx.class, "intake");
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
