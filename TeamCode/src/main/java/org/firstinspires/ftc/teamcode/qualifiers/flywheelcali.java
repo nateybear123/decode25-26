@@ -33,6 +33,8 @@ public class flywheelcali extends LinearOpMode {
     private double targetRpm = 0.0;
 
     boolean startup = false;
+    boolean lb_prev = false;
+    boolean rb_prev = false;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -59,7 +61,8 @@ public class flywheelcali extends LinearOpMode {
                 flywheel.setPower(.7);
                 startup = true;
             }
-            if (lb) {
+
+            if (lb && !lb_prev) {
                 if (startup){
                     flywheel.setPower(0);
                     startup = false;
@@ -67,7 +70,7 @@ public class flywheelcali extends LinearOpMode {
                 targetRpm += 100;
             }
 
-            if (rb) {
+            if (rb && !rb_prev) {
                 if (startup){
                     flywheel.setPower(0);
                     startup = false;
@@ -86,6 +89,10 @@ public class flywheelcali extends LinearOpMode {
             telemetry.addLine("Controls: LB = increase speed, RB = reset speed");
             telemetry.addLine("Target RPM:"+ targetRpm);
             telemetry.update();
+
+            // Update previous button states
+            lb_prev = lb;
+            rb_prev = rb;
         }
     }
 }
