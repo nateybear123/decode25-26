@@ -44,9 +44,7 @@ public class flywheelcali extends LinearOpMode {
 
         intake = hardwareMap.get(DcMotorEx.class, "intake");
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        //TODO if you need to reverse the direction uncomment this hunter
-        //intake.setDirection(DcMotorSimple.Direction.REVERSE);
+        intake.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
