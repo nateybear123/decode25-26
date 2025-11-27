@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 
 public class qualifiersHardwareMap {
-    public DcMotorEx bl, br, fl, fr, flywheel;
+    public DcMotorEx bl, br, fl, fr, flywheel, intake;
 
     //    public NormalizedColorSensor colorSensor;
     public IMU imu;
@@ -27,6 +27,10 @@ public class qualifiersHardwareMap {
         bl = hardwareMap.get(DcMotorEx.class, "backLeft");
         fr = hardwareMap.get(DcMotorEx.class, "frontRight");
         fl = hardwareMap.get(DcMotorEx.class, "frontLeft");
+
+        intake = hardwareMap.get(DcMotorEx.class, "intake");
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intake.setDirection(DcMotorSimple.Direction.REVERSE);
 
         imu = hardwareMap.get(IMU.class, "imu");
 

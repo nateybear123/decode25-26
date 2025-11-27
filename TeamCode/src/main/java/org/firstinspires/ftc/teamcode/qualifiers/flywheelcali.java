@@ -26,9 +26,8 @@ import java.util.List;
 @TeleOp(name = "Flywheel Cali", group = "qualifiers")
 public class flywheelcali extends LinearOpMode {
 
-    private static final String FLYWHEEL_MOTOR = "flywheel";
+    qualifiersHardwareMap hardware = new qualifiersHardwareMap();
 
-    private DcMotorEx flywheel, intake;
 
     private double targetRpm = 0.0;
 
@@ -36,17 +35,17 @@ public class flywheelcali extends LinearOpMode {
     boolean lb_prev = false;
     boolean rb_prev = false;
 
+
+    DcMotorEx flywheel = hardware.flywheel;
+    DcMotorEx intake = hardware.intake;
     @SuppressLint("DefaultLocale")
     @Override
     public void runOpMode() {
         //init stuff
-        flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
-        flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        flywheel.setDirection(DcMotor.Direction.REVERSE);
+        hardware.init(hardwareMap);
 
-        intake = hardwareMap.get(DcMotorEx.class, "intake");
-        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intake.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
 
         waitForStart();
 

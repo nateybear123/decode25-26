@@ -18,11 +18,6 @@ public class flywheelTesting extends LinearOpMode {
     // ========================================================================
     // CONFIGURATION SECTION - ADJUST THESE VALUES FOR OUR ROBOT
     // ========================================================================
-
-    // TODO: Set this to your flywheel motor's hardware config name
-    private static final String FLYWHEEL_MOTOR = "flywheel";
-
-
     private static final double WHEEL_DIAMETER_M = 0.090;  // 90mm (put in meters)
 
     //direct drive
@@ -75,7 +70,6 @@ public class flywheelTesting extends LinearOpMode {
 
     // Hardware
     private MecanumDrive drive;
-    private DcMotorEx flywheel;
 
     // Goal tracking
     private boolean targetBlueGoal = true;  // true = blue, false = red
@@ -99,6 +93,9 @@ public class flywheelTesting extends LinearOpMode {
 
     qualifiersHardwareMap hardware = new qualifiersHardwareMap();
 
+    DcMotorEx flywheel = hardware.flywheel;
+    DcMotorEx intake = hardware.intake;
+
     @Override
     public void runOpMode() {
         // Initialize telemetry
@@ -106,8 +103,6 @@ public class flywheelTesting extends LinearOpMode {
 
         // Initialize hardware
         hardware.init(hardwareMap);
-        flywheel = hardwareMap.get(DcMotorEx.class, FLYWHEEL_MOTOR);
-        flywheel.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
 
         // Initialize localization
         drive = LocalizationHelper.initializeForTeleOp(hardwareMap);
