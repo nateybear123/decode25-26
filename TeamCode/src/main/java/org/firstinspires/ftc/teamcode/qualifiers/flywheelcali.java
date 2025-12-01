@@ -38,14 +38,11 @@ public class flywheelcali extends LinearOpMode {
 
     DcMotorEx flywheel = hardware.flywheel;
     DcMotorEx intake = hardware.intake;
-    @SuppressLint("DefaultLocale")
+
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException{
         //init stuff
         hardware.init(hardwareMap);
-
-
-
 
         waitForStart();
 
