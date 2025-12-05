@@ -93,8 +93,8 @@ public class flywheelTesting extends LinearOpMode {
 
     qualifiersHardwareMap hardware = new qualifiersHardwareMap();
 
-    DcMotorEx flywheel = hardware.flywheel;
-    DcMotorEx intake = hardware.intake;
+    DcMotorEx flywheel;
+    DcMotorEx intake;
 
     @Override
     public void runOpMode() {
@@ -103,6 +103,9 @@ public class flywheelTesting extends LinearOpMode {
 
         // Initialize hardware
         hardware.init(hardwareMap);
+
+        flywheel = hardware.flywheel;
+        intake = hardware.intake;
 
         // Initialize localization
         drive = LocalizationHelper.initializeForTeleOp(hardwareMap);

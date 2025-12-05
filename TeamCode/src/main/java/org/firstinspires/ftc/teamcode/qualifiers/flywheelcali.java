@@ -36,13 +36,16 @@ public class flywheelcali extends LinearOpMode {
     boolean rb_prev = false;
 
 
-    DcMotorEx flywheel = hardware.flywheel;
-    DcMotorEx intake = hardware.intake;
+    DcMotorEx flywheel;
+    DcMotorEx intake;
 
     @Override
     public void runOpMode() throws InterruptedException{
         //init stuff
         hardware.init(hardwareMap);
+
+        flywheel = hardware.flywheel;
+        intake = hardware.intake;
 
         waitForStart();
 
