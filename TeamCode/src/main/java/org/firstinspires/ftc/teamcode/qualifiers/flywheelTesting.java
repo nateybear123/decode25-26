@@ -27,7 +27,7 @@ public class flywheelTesting extends LinearOpMode {
 
     // TODO: TUNE THIS - Effectiveness coefficient (accounts for flap wheels, friction, slip)
     // Start with 0.8 and adjust based on testing:
-    //   - If shots go TOO FAR: INCREASE this value (try 0.85)
+    //   - If shots go TOO FAR: INCREAS E this value (try 0.85)
     //   - If shots go TOO SHORT: DECREASE this value (try 0.75)
     // This accounts for energy from flap wheels + energy transfer efficiency
     private static final double KEFF = 0.80;
