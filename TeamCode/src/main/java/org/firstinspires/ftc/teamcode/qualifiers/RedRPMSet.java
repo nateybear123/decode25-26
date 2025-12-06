@@ -16,6 +16,9 @@ public class RedRPMSet extends LinearOpMode {
     //Flywheel stuff
     private double targetRpm = 0.0;
     boolean rb_prev = false;
+    boolean lb_prev = false;
+    int intake_state = -1;
+    int flywheel_state = -1;
 
 
     DcMotorEx flywheel = hardware.flywheel;
@@ -30,9 +33,10 @@ public class RedRPMSet extends LinearOpMode {
 
         waitForStart();
 
-        while(opModeIsActive()){
+        while(opModeIsActive()) {
             //Controls
             final boolean rb = gamepad1.right_bumper;
+            final boolean lb = gamepad1.left_bumper;
 
             // Update localization and display position (combines update + position telemetry)
             LocalizationHelper.updateWithTelemetry(drive, telemetry, false);
@@ -45,22 +49,48 @@ public class RedRPMSet extends LinearOpMode {
             telemetry.addData("Distance to Red Goal (in)", "%.1f", distanceInches);
             telemetry.addLine();
 
-            //TODO Put code here
-            // Example: Use distance for logic
+            //Intake Case
+            intake_state = intake_state % 3;
+            switch (intake_state) {
+                case 0:
+                    intake.setPower(75);
+                case 1:
+                    intake.setPower(-75);
+                case 2:
+                    intake.setPower(0);
+                default:
+                    intake.setPower(0);
+            }
+
+            //Flywheel Case
+            flywheel_state = flywheel_state % 2;
+            switch (flywheel_state) {
+                case 0:
+                    flywheel.setVelocity(targetRpm);
+                case 1:
+                    flywheel.setVelocity(0);
+                default:
+                    flywheel.setVelocity(0);
+            }
+
+
+            //Flywheel button - right bumper
             if (rb && !rb_prev) {
-                //targetRpm = ((distanceInches - b)/m); //TODO Uncomment line when replaced with values
-                //b and m are temp variables for regression (y=mx+b)
+                targetRpm = (distanceInches + 144) / .12;
+                flywheel_state += 1;
+            }
 
-                wait(1500);
-                //launch first artifact
+            //Intake button - left bumper
+            if (lb && !lb_prev) {
+                intake_state += 1;
+            }
 
-                wait(1000);
-                //launch second artifact
 
-                wait(1000);
-                //launch third artifact
 
-                targetRpm = 0;
+
+            // Update previous button states
+            lb_prev = lb;
+            rb_prev = rb;
 
             }
 
