@@ -37,6 +37,10 @@ public class actuatorCode extends LinearOpMode {
                 leftActuator.setPower(0);
                 rightActuator.setPower(0);
             }
+
+            telemetry.addData("Left Actuator Pos: ", leftActuator.getCurrentPosition());
+            telemetry.addData("Left Actuator Pos: ", leftActuator.getCurrentPosition());
+            telemetry.update();
         }
     }
 }
