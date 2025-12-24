@@ -38,6 +38,7 @@ public class flywheelcali extends LinearOpMode {
 
     DcMotorEx flywheel;
     DcMotorEx intake;
+    DcMotorEx uptake;
 
     @Override
     public void runOpMode() throws InterruptedException{
@@ -46,6 +47,8 @@ public class flywheelcali extends LinearOpMode {
 
         flywheel = hardware.flywheel;
         intake = hardware.intake;
+        uptake = hardware.uptake;
+
 
         waitForStart();
 
@@ -77,8 +80,10 @@ public class flywheelcali extends LinearOpMode {
 
             if (gamepad1.y){
                 intake.setPower(100);
+                uptake.setPower(100);
             } else if (gamepad1.a) {
                 intake.setPower(0);
+                uptake.setPower(0);
             }
 
 
