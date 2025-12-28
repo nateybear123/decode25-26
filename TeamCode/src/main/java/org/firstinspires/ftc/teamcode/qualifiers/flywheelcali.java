@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode.qualifiers;
 
 
@@ -79,8 +80,8 @@ public class flywheelcali extends LinearOpMode {
             }
 
             if (gamepad1.y){
-                intake.setPower(100);
-                uptake.setPower(100);
+                intake.setPower(.7);
+                uptake.setPower(.7);
             } else if (gamepad1.a) {
                 intake.setPower(0);
                 uptake.setPower(0);
